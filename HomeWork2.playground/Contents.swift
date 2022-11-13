@@ -1,7 +1,7 @@
 
 import Foundation
 
-class Garden {
+class Zoo {
     var animals = [Animal]()
     var caretakers = [Caretaker]()
     var dailyWaterLimit = 0
@@ -18,6 +18,11 @@ class Garden {
             bitBudget -= caretaker.salary
         }
     }
+    func waterAnimals() {
+         for animal in animals {
+             dailyWaterLimit -= animal.waterConsumption
+         }
+     }
 }
 
 class Animal {
@@ -31,6 +36,9 @@ class Animal {
         self.waterConsumption = waterConsumption
         self.sound = sound
     }
+    
+   
+    
 }
 
 class Caretaker {
@@ -43,16 +51,15 @@ class Caretaker {
     }
 }
 
-// Path: main.swift
-let garden = Garden()
-garden.addIncomeAndExpenses(income: 1000, expenses: 500)
+let zoo = Zoo()
+zoo.addIncomeAndExpenses(income: 1000, expenses: 500)
 
 let caretaker = Caretaker(name: "Emin", salary: 100)
-garden.caretakers.append(caretaker)
+zoo.caretakers.append(caretaker)
 
 let animal = Animal(name: "Lion", waterConsumption: 200, sound: "Roar")
-garden.animals.append(animal)
+zoo.animals.append(animal)
 
 animal.keeper = caretaker
 
-garden.paySalaries
+zoo.paySalaries
